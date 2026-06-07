@@ -76,13 +76,7 @@ const sentOtpService = (userData) => {
         try {
             const { email } = userData
             const otp = Math.floor(100000 + Math.random() * 900000);
-
             const setOtp = await client.set(`otp:${email}`, otp, { EX: 300, NX: true });
-            console.log(setOtp)
-            // const ttl = await client.ttl(`otp:${email}`);
-
-            // console.log("OTP expires in seconds:", ttl);
-
             if (otp) {
                 resolve(otp)
             }

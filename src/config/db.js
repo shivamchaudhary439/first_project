@@ -7,8 +7,8 @@ const connection = mysql.createPool({
     database: process.env.DB_DATABASE
 })
 
-    // connection.query('SELECT 1').then(() => console.log("Connected"))
-    //     .catch(err => console.log("Error", err));
+connection.query('SELECT 1').then(() => console.log("Connected"))
+    .catch(err => console.log("Error", err));
 
 
 module.exports = connection;
