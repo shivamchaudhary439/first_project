@@ -119,4 +119,23 @@ const verifyOtp = async (req, res) => {
     }
 };
 
-module.exports = { register, login, profile, sentOtp, verifyOtp };
+const profileUploade = async (req, res) => {
+    try {
+        const result = await userService.profileUploadeServices(req.body,req.file);
+        if (result) {
+            return res.status(constant.STATUS_CODES.SUCCESS).json({
+                message: constant.MESSAGES.SUCCESS,
+                status: constant.STATUS_CODES.STATUS_TRUE,
+                data: result
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        return res.status(constant.STATUS_CODES.SERVER_ERROR).json({
+            message: constant.MESSAGES.SERVER_ERROR,
+            error: err.message
+        });
+    }
+};
+
+module.exports = { register, login, profile, sentOtp, verifyOtp, profileUploade };

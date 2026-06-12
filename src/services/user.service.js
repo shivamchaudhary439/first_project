@@ -134,4 +134,29 @@ function generatedJWTToken(id, name, email) {
         }
     })
 }
-module.exports = { createUser, userLogin, userProfile, sentOtpService, verifyOtpService };
+
+const profileUploadeServices = (userData, userFile, headers) => {
+    return new Promise(async (resolve, rejects) => {
+        try {
+            // console.log(userFile)
+            // console.log(userFile.filename)
+            // console.log(userFile.path)
+             const imageUrl = `http://localhost:3000/uploads/${userFile.filename}`;
+            console.log(imageUrl)
+            // const { image } = userData;
+            // console.log(image)
+            // const cached = await client.get("users");
+            // if (cached) {
+            //     resolve(JSON.parse((cached)))
+            // }
+            // const sql = `select * from users`;
+            // const [rows] = await connection.query(sql);
+            // const users = await client.set("users", JSON.stringify(rows));
+            // resolve(rows)
+        } catch (err) {
+            rejects(err);
+        }
+    });
+};
+
+module.exports = { createUser, userLogin, userProfile, sentOtpService, verifyOtpService, profileUploadeServices };
